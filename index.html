@@ -255,7 +255,7 @@ var end_block = document.querySelector("body > div.content-box > div:nth-child(8
 window.onload=function(){
 	// start_block.textContent = start;
   end_block.textContent = end;
-  document.querySelector('body > div.content-box > div.top-title > h3').textContent = getQueryVariable('name');
+  document.querySelector('body > div.content-box > div.top-title > h3').textContent = getQueryString('name')+'通行码';
 
 }   
 
@@ -279,15 +279,26 @@ function p(s) {
 	return s < 10 ? '0' + s : s;
 }
 
-function getQueryVariable(variable)
-{
-       var query = window.location.search.substring(1);
-       var vars = query.split("&");
-       for (var i=0;i<vars.length;i++) {
-               var pair = vars[i].split("=");
-               if(pair[0] == variable){return pair[1];}
-       }
-       return('小帅鸽');
+// function getQueryVariable(variable)
+// {
+//        var query = window.location.search.substring(1);
+//        var vars = query.split("&");
+//        for (var i=0;i<vars.length;i++) {
+//                var pair = vars[i].split("=");
+//                if(pair[0] == variable){return pair[1];}
+//        }
+//        return('小帅鸽');
+// }
+
+// function getQueryString(key){
+//         var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+//         var result = window.location.search.substr(1).match(reg);
+//         return result?decodeURIComponent(result[2]):null;
+//       }
+function getQueryString(name) { 
+	  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+	  var r = window.location.search.substr(1).match(reg); 
+	  if (r != null) return decodeURI(r[2]); return null; 
 }
 
 </script>
