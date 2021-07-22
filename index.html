@@ -200,7 +200,7 @@ html, body {
 <div class="content-box">
 
     <div class="top-title">
-        <h3>黄震通行码</h3>
+        <h3>通行码</h3>
         
         
             
@@ -250,12 +250,13 @@ var start = dt + ' 00:00:00';
 var end ='有效时间至：'+ dt + ' 23:59:59';
 // var start_block = document.querySelector("#label_0d04bf49-62f0-4388-87b2-dc50f2d6c21c");
 var end_block = document.querySelector("body > div.content-box > div:nth-child(8)");
-
 // start_block.textContent = start;
 // end_block.textContent = end;
 window.onload=function(){
 	// start_block.textContent = start;
   end_block.textContent = end;
+  document.querySelector('body > div.content-box > div.top-title > h3').textContent = getQueryVariable('name');
+
 }   
 
 //获取系统时间
@@ -277,6 +278,18 @@ setInterval("showTime()", 1000);
 function p(s) {
 	return s < 10 ? '0' + s : s;
 }
+
+function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return('小帅鸽');
+}
+
 </script>
 
 
